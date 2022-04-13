@@ -1,3 +1,4 @@
+import 'package:atopa_app_flutter/providers/alumnos.dart';
 import 'package:atopa_app_flutter/providers/bm_navbar_provider.dart';
 import 'package:atopa_app_flutter/themes/custom_theme.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ((context) => BmNavbarProvider()))
+        ChangeNotifierProvider(create: (context) => BmNavbarProvider()),
+        ChangeNotifierProvider(
+          create: (context) => AlumnosProvider(),
+        )
       ],
       child: MaterialApp(
         title: 'Material App',

@@ -4,6 +4,10 @@ import '../widgets/widgets.dart';
 class CuentaScreen extends StatelessWidget {
   const CuentaScreen({Key? key}) : super(key: key);
 
+  cambiando(String value) {
+    print(value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,25 +32,28 @@ class CuentaScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 5),
-                  const CustomInputField(
+                  CustomInputField(
                     hintText: '',
                     labelText: 'Contraseña antigua',
                     helperText: '',
                     password: true,
+                    callback: cambiando,
                   ),
                   const SizedBox(height: 5),
-                  const CustomInputField(
+                  CustomInputField(
                     hintText: '',
                     labelText: 'Contraseña nueva',
                     helperText: '',
                     password: true,
+                    callback: cambiando,
                   ),
                   const SizedBox(height: 5),
-                  const CustomInputField(
+                  CustomInputField(
                     hintText: '',
                     labelText: 'Contraseña nueva (confirmacion)',
                     helperText: '',
                     password: true,
+                    callback: cambiando,
                   ),
                   Center(
                     child: Row(

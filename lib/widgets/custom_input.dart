@@ -6,15 +6,17 @@ class CustomInputField extends StatelessWidget {
   final String? helperText;
   final TextInputType? inputType;
   final bool password;
+  final void Function(String) callback;
 
-  const CustomInputField({
-    Key? key,
-    required this.hintText,
-    required this.labelText,
-    required this.helperText,
-    this.inputType,
-    this.password = false,
-  }) : super(key: key);
+  CustomInputField(
+      {Key? key,
+      required this.hintText,
+      required this.labelText,
+      required this.helperText,
+      this.inputType,
+      this.password = false,
+      required this.callback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class CustomInputField extends StatelessWidget {
         if (value == null) return 'Obligatorio';
         return value.length < 3 ? 'Minimo 3 letras' : null;
       },
+      onChanged: callback,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
           hintText: hintText, labelText: labelText, helperText: helperText),
