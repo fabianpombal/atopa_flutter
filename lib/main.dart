@@ -1,11 +1,19 @@
 import 'package:atopa_app_flutter/providers/alumnos.dart';
 import 'package:atopa_app_flutter/providers/bm_navbar_provider.dart';
 import 'package:atopa_app_flutter/themes/custom_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import './screens/screens.dart';
+import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MyApp());
+}
+
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   static const String atopaPdd = 'https://www.atopa.es/pdd.html';
@@ -19,19 +27,16 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         title: 'Material App',
         debugShowCheckedModeBanner: false,
         theme: CustomTheme.lightTheme,
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text('ATOPA'),
-            backgroundColor: const Color.fromRGBO(13, 96, 254, 1),
-          ),
           body: const Center(
             child: Text('Hello World'),
           ),
         ),
-        initialRoute: 'menu',
+        initialRoute: 'sign-in',
         routes: {
           'sign-in': (_) => const SignInScreen(),
           'sign-up': (_) => const SignUpScreen(),

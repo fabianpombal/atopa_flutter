@@ -11,8 +11,6 @@ class TestsScreen extends StatelessWidget {
       'Cuestionario 3'
     ];
     return Scaffold(
-      //TODO: boton para new test
-
       body: Center(
         child: ListView.separated(
             padding: const EdgeInsets.all(8),

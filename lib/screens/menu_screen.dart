@@ -19,9 +19,6 @@ class MenuScreen extends StatelessWidget {
       ),
     );
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ATOPA'),
-      ),
       body: _HomeBody(),
       bottomNavigationBar: const CustomBottomNavBar(),
     );

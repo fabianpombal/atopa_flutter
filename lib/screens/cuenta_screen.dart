@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 
@@ -10,6 +11,7 @@ class CuentaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -23,8 +25,8 @@ class CuentaScreen extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: const Text(
-                  'Por favor, introduzca su contraseña antigua, por seguridad, y despues introduzca la nueva contraseña dos veces para verificar que la ha escrito correctamente: '),
+              child: Text(
+                  'Por favor, ${user.email}, introduzca su contraseña antigua, por seguridad, y despues introduzca la nueva contraseña dos veces para verificar que la ha escrito correctamente: '),
             ),
             Form(
                 child: Padding(
@@ -66,7 +68,7 @@ class CuentaScreen extends StatelessWidget {
                         ),
                         ElevatedButton(
                             onPressed: () => Navigator.pop(context),
-                            child: Text('Cancelar'))
+                            child: Text('Cancelar')),
                       ],
                     ),
                   )
