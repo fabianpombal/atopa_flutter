@@ -60,6 +60,11 @@ class LogInPage extends StatelessWidget {
             ],
           ),
         ),
+        TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'pass-recovery');
+            },
+            child: const Text('Has olvidado tu contraseña?')),
         const SizedBox(
           height: 10,
         ),
